@@ -29,7 +29,6 @@ module OnTheSpot
       options.reverse_merge!(:ok_text     => t('on_the_spot.ok'),
                              :cancel_text => t('on_the_spot.cancel'),
                              :tooltip     => t('on_the_spot.tooltip'),
-                             :placeholder => t('on_the_spot.placeholder', :default => nil),
                              :rows        => 5,
                              :columns     => 40
                             )
@@ -61,7 +60,7 @@ module OnTheSpot
       html_options[:'data-ok']          = options[:ok_text]
       html_options[:'data-cancel']      = options[:cancel_text]
       html_options[:'data-tooltip']     = options[:tooltip]
-      html_options[:'data-placeholder'] = options[:placeholder]
+      html_options[:'data-placeholder'] = options[:placeholder] || options[:tooltip]
 
       content_tag("span", html_options) do
         if editable_type == :select
