@@ -31,10 +31,10 @@ module OnTheSpot
                              :tooltip     => t('on_the_spot.tooltip'),
                              :rows        => 5,
                              :columns     => 40, 
-                             :post_url         => url_for(:action => 'update_attribute_on_the_spot')
+                             :url         => {:action => 'update_attribute_on_the_spot'}
                             )
 
-      update_url = options[:post_url]
+      update_url = url_for(options[:url])
 
       field_value =  object.send(field.to_sym).to_s
 
