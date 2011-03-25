@@ -33,7 +33,7 @@ module OnTheSpot
                              :columns     => 40
                             )
 
-      update_url = url_for(:action => 'update_attribute_on_the_spot')
+      update_url = url_for(:controller => object.class.model_name.tableize, :action => 'update_attribute_on_the_spot')
 
       field_value =  object.send(field.to_sym).to_s
 
