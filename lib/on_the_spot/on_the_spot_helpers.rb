@@ -11,9 +11,10 @@ module OnTheSpot
     #   cancel_text : the cancel-button text
     #   tooltip     : the tooltip to show
     #   placeholder : the placeholder to show
-    #   type        : {'textarea' || 'select' }
+    #   type        : {'textarea' || 'select'  || 'text' }
     #   rows        : nr of rows for textarea
     #   columns     : nr of columns for textarea
+    #   maxlength : for text field or set to data-maxlength for textarea
     #   loadurl     : (for select) an url that will return the json for the select
     #   data        : (for select) an array of options in the form [id, value]
     def on_the_spot_edit(object, field, options={})
@@ -57,7 +58,10 @@ module OnTheSpot
       elsif editable_type == :textarea
         html_options[:'data-rows']      = options[:rows]
         html_options[:'data-columns']   = options[:columns]
-      end
+        html_options[:'data-maxlength'] = options[:maxlength]
+      else
+        html_options[:'maxlength'] = options[:maxlength]
+      end 
       html_options[:'data-ok']          = options[:ok_text]
       html_options[:'data-cancel']      = options[:cancel_text]
       html_options[:'data-tooltip']     = options[:tooltip]
